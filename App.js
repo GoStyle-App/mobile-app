@@ -1,21 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { StyleSheet, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useState } from 'react';
+import getPromotionalCodes from "./api/getPromotionalCodes";
+import PromotionalCodes from "./components/PromotionalCodes";
+import initPromotionalCodes from "./model/initPromotionalCodes";
 
-export default function App() {
-    return (
-        <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-            <StatusBar style="auto" />
-        </View>
-    );
+function Logo() {
+  return (
+      <Image
+          style={{ width: 175, height: 40 }}
+          source={require('./assets/logo.png')}
+      />
+  );
+}
+
+function HomeScreen() {
+  const [ codes, setCodes ] = useState(initPromotionalCodes);
+
+  console.log(codes);
+
+  return (
+      <View style={ styles.homepage }>
+          <PromotionalCodes
+              codes={ codes }
+          />
+      </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+              name='Home'
+              component={ HomeScreen }
+              options={({ navigation }) => ({
+                headerTitle: props => <Logo {...props} />,
+              })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+    homepage: {}
+})
+
+export default App;
