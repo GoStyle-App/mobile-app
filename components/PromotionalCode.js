@@ -5,10 +5,6 @@ import { IconButton, Colors } from 'react-native-paper';
 export default function PromotionalCode(codes) {
     const code = codes.code;
 
-    if (!code.unlock) {
-        return;
-    }
-
     return (
         <View style={ styles.list }>
             <Text style={ styles.code }>
@@ -30,7 +26,7 @@ export default function PromotionalCode(codes) {
                 color={Colors.red500}
                 size={20}
                 onPress={() => {
-                    code.unlock = false;
+                    //Todo delete
                 }}
             />
         </View>
