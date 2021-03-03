@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 import PromotionalCode from './PromotionalCode';
+import getPromotionalCodes from '../api/getPromotionalCodes';
 
-export default function PromotionalCodes({ codes }) {
-    let show = false;
+export default function PromotionalCodes() {
+    const [ codes, setCodes ] = useState([]);
 
-    console.log(codes, 'banane');
-    console.log(typeof codes);
-    console.log(codes.length);
-    codes.forEach(code => {
-        console.log(code.unlock);
-        if (code.unlock) {
-            show = true;
-        }
+    getPromotionalCodes().then((promotionalCodes) => {
+        let codes = [];
+
+        promotionalCodes.forEach(promotionalCode => {
+            codes.push({
+                'id': promotionalCode.id,
+                'code': promotionalCode.code,
+                'label': promotionalCode.label,
+                'description': promotionalCode.description,
+                'startDate': promotionalCode.startDate,
+                'endDate': promotionalCode.endDate,
+            });
+        });
+
+        setCodes(codes);
     });
 
-    console.log(show);
+    let show = true;
+    //Todo if i have qrcode
 
     if (show) {
         return (

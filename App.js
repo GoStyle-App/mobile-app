@@ -3,9 +3,7 @@ import { StyleSheet, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useState } from 'react';
-import getPromotionalCodes from "./api/getPromotionalCodes";
 import PromotionalCodes from "./components/PromotionalCodes";
-import initPromotionalCodes from "./model/initPromotionalCodes";
 
 function Logo() {
   return (
@@ -17,15 +15,9 @@ function Logo() {
 }
 
 function HomeScreen() {
-  const [ codes, setCodes ] = useState(initPromotionalCodes);
-
-  console.log(codes);
-
   return (
       <View style={ styles.homepage }>
-          <PromotionalCodes
-              codes={ codes }
-          />
+          <PromotionalCodes/>
       </View>
   );
 }
