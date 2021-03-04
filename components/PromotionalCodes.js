@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 import PromotionalCode from './PromotionalCode';
 import getPromotionalCodes from '../api/getPromotionalCodes';
 
-export default function PromotionalCodes() {
+export default function PromotionalCodes({ navigation }) {
     const [ codes, setCodes ] = useState([]);
 
     getPromotionalCodes().then((promotionalCodes) => {
@@ -33,7 +33,12 @@ export default function PromotionalCodes() {
                 <FlatList
                     data={ codes }
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => <PromotionalCode code={ item } />}
+                    renderItem={({ item }) =>
+                        <PromotionalCode
+                            code={ item }
+                            navigation={ navigation }
+                        />
+                    }
                 />
             </View>
         )
@@ -45,9 +50,9 @@ export default function PromotionalCodes() {
             <Text style={ styles.text }>Pas de codes promos</Text>
             <View style={ styles.buttonContainer }>
                 <Button
-                    title="Scanner"
+                    title="Scan"
                     onPress={() => {
-                        //Todo navigate scan page
+                        // TODO: scan button
                     }}
                     color='#38B6FF'
                 />
