@@ -4,6 +4,7 @@ import { IconButton, Colors } from 'react-native-paper';
 
 export default function PromotionalCode(codes) {
     const code = codes.code;
+    const navigation = codes.navigation;
 
     return (
         <View style={ styles.list }>
@@ -18,7 +19,9 @@ export default function PromotionalCode(codes) {
                 color={Colors.blue300}
                 size={20}
                 onPress={() => {
-                    //Todo navigate detail
+                    navigation.navigate('DetailPromotionalCode', {
+                        code: code,
+                    });
                 }}
             />
             <IconButton
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
         width: 80,
         backgroundColor: '#000',
         padding: 2,
-        color: '#fff',
+        color: '#FFF',
         textAlign: 'center',
     },
     label: {
