@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Colors, IconButton } from 'react-native-paper';
-import getDateText from "../filters/getDateText";
+import getDateText from './../filters/getDateText';
 
 export default function DetailPromotionalCode({ route, navigation }) {
     const { code } = route.params;
+    const { myCodes } = route.params;
 
     return (
         <View style={ styles.container }>
@@ -15,11 +16,11 @@ export default function DetailPromotionalCode({ route, navigation }) {
             <Text style={ styles.description }>{ code.description }</Text>
             <View style={ styles.buttonContainer }>
                 <IconButton
-                    icon="trash-can-outline"
+                    icon="arrow-left"
                     color={ Colors.white }
-                    size={ 40 }
+                    size={ 35 }
                     onPress={() => {
-                        //Todo delete
+                        navigation.navigate('Home');
                     }}
                 />
             </View>
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
         width: 200,
         marginBottom: 18,
         padding: 10,
+        textAlign: 'center',
     },
     date: {
         color: '#38B6FF',
@@ -57,9 +59,9 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
     },
     buttonContainer: {
-        backgroundColor: '#D10000',
+        backgroundColor: '#38B6FF',
         borderRadius: 50,
-        marginLeft: 200,
-        marginTop: 100,
+        marginRight: 250,
+        marginTop: 350,
     }
 })

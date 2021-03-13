@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default function ScanComponent(props) {
+export default function Scan({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -15,13 +15,14 @@ export default function ScanComponent(props) {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    props.navig.navigate('Accueil', { link: data, } );
+    navigation.navigate('Home', { link: data, } );
   };
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
-  if (hasPermission === false) {
+
+  if (!hasPermission) {
     return <Text>No access to camera</Text>;
   }
 
@@ -31,7 +32,7 @@ export default function ScanComponent(props) {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
-      {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      {scanned && <Button title={'Je veux scanner !'} onPress={() => setScanned(false)} />}
     </View>
   );
 }
