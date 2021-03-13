@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 import PromotionalCode from './PromotionalCode';
 import getPromotionalCodes from '../api/getPromotionalCodes';
 
-export default function PromotionalCodes({ navigation }) {
+export default function PromotionalCodes(props) {
+    const { link } = props.route.params;
     const [ codes, setCodes ] = useState([]);
 
     getPromotionalCodes().then((promotionalCodes) => {
@@ -30,6 +31,7 @@ export default function PromotionalCodes({ navigation }) {
         return (
             <View style={ styles.codes }>
                 <Text style={ styles.title }>Mes codes promos</Text>
+                <Text style={ styles.title }>Vous venez de scanner : {JSON.stringify(link)}</Text>
                 <FlatList
                     data={ codes }
                     keyExtractor={(item) => item.id.toString()}
