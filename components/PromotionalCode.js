@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, } from 'react-native'
 import { IconButton, Colors } from 'react-native-paper';
 
 export default function PromotionalCode(codes) {
     const code = codes.code;
     const navigation = codes.navigation;
+    const myCodes = codes.myCodes;
+    const [ hidden, setHidden ] = useState(false);
+
+    if (hidden) {
+        return (
+            <View/>
+        )
+    }
 
     return (
         <View style={ styles.list }>
@@ -29,7 +37,11 @@ export default function PromotionalCode(codes) {
                 color={Colors.red500}
                 size={20}
                 onPress={() => {
-                    //Todo delete
+                    const index = myCodes.findIndex(x => x.id === code.id);
+                    if (index !== undefined) {
+                        myCodes.splice(index, 1);
+                    }
+                    setHidden(true);
                 }}
             />
         </View>
@@ -46,7 +58,7 @@ const styles = StyleSheet.create({
         width: 80,
         backgroundColor: '#000',
         padding: 2,
-        color: '#FFF',
+        color: '#ffffff',
         textAlign: 'center',
     },
     label: {

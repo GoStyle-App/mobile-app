@@ -1,114 +1,149 @@
 import * as React from 'react';
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
 } from '@react-navigation/drawer';
-import ScanScreen from './components/scan-screen';
-import { createStackNavigator } from '@react-navigation/stack';
+import Scan from './components/Scan';
 import PromotionalCodes from './components/PromotionalCodes';
 import DetailPromotionalCode from './components/DetailPromotionalCode';
+import { useState } from 'react';
 
-function Nav(props) {
-  return (
-    <View style={styles.container_nav}>
-        <TouchableOpacity style={styles.button} onPress={() => props.navig.toggleDrawer()}>
-            <MaterialIcons name="menu" style={styles.menu} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.titleButton} onPress={()=>{alert("Retour à l'accueil")}}>
-          <Image
-              style={{ width: 175, height: 40 }}
-              source={require('./assets/logo.png')}
-          />
-        </TouchableOpacity>
-    </View>
-  );
+function Navbar({ navigation }) {
+    return (
+        <View style={styles.containerNavbar}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.toggleDrawer()}>
+                <MaterialIcons name="menu" style={styles.menu} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.titleButton}
+                onPress={()=>{
+                    navigation.navigate('Home', {
+                        navigation: navigation,
+                    });
+                }}
+            >
+                <Image
+                    style={{ width: 175, height: 40 }}
+                    source={require('./assets/logo.png')}
+                />
+            </TouchableOpacity>
+        </View>
+    );
 }
 
-function Home({ route, navigation }) {
-  return (
-    <View style={styles.container}>
-      <Nav navig={navigation} />
-      <PromotionalCodes route={route} navig={navigation} />
-    </View>
-  );
+function HomeScreen({ route, navigation }) {
+    const [ myCodes, setMyCodes ] = useState([]);
+
+    return (
+        <View style={ styles.container }>
+            <Navbar navigation={ navigation } />
+            <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
+        </View>
+    );
 }
 
-function Scan({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Nav navig={navigation} />
-      <ScanScreen navig={navigation}/>
-    </View>
-  )
+function ScanScreen({ navigation }) {
+    return (
+        <View style={styles.container}>
+            <Navbar navigation={navigation} />
+            <Scan navigation={navigation}/>
+        </View>
+    )
+}
+
+function DetailPromotionalCodeScreen({ route, navigation }) {
+    return (
+        <View>
+            <Navbar navigation={navigation} />
+            <DetailPromotionalCode navigation={ navigation } route={ route }/>
+        </View>
+    )
 }
 
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
-  return (
-      <DrawerContentScrollView {...props}>
-          <DrawerItemList {...props} />
-          <DrawerItem
-              label="Close"
-              onPress={() => props.navigation.toggleDrawer()}
-          />
-      </DrawerContentScrollView>
-  );
+    return (
+        <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+        </DrawerContentScrollView>
+    );
 }
 
 function App() {
-  return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-          <Drawer.Screen name="Accueil" component={Home} initialParams={{ link: ''}} />
-          <Drawer.Screen name="Scan" component={Scan} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <NavigationContainer>
+                <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
+                    <Drawer.Screen
+                        name='Home'
+                        component={ HomeScreen }
+                        initialParams={{ link: '' }}
+                        options={{
+                            title: 'Accueil',
+                        }}
+                    />
+                    <Drawer.Screen
+                        name='Scan'
+                        component={ ScanScreen }
+                        options={{
+                            title: 'Scanner un Qrcode',
+                        }}
+                    />
+                    <Drawer.Screen
+                        name='DetailPromotionalCode'
+                        component={ DetailPromotionalCodeScreen }
+                        options={{
+                            drawerLabel: () => null,
+                            title: null,
+                            drawerIcon: () => null,
+                        }}
+                    />
+                </Drawer.Navigator>
+            </NavigationContainer>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-      backgroundColor: '#CAC9C8',
-      flex: 1
-  },
-  container_nav: {
-      marginTop: 30,
-      flexDirection:'row',
-      backgroundColor: 'white',
-      textAlign: "center",
-  },
-  button: {
-      backgroundColor: 'white',
-      padding: 13,
-      width: 50
-  },
-  titleButton: {
-      backgroundColor: 'white',
-      padding: 10,
-      width: 195,
-      justifyContent: "center"
-  },
-  title: {
-      fontSize: 22,
-      fontWeight: "bold",
-      justifyContent: "center"
-  },
-  menu: {
-      fontSize: 35,
-      justifyContent: 'flex-start'
-  },
-  login: {
-      fontSize: 35,
-      justifyContent: 'flex-end'
-  }
+    container: {
+        backgroundColor: '#F6F6F6',
+        flex: 1,
+    },
+    containerNavbar: {
+        marginTop: 30,
+        flexDirection:'row',
+        backgroundColor: 'white',
+        textAlign: 'center',
+    },
+    button: {
+        backgroundColor: 'white',
+        padding: 13,
+        width: 50,
+    },
+    titleButton: {
+        backgroundColor: 'white',
+        padding: 10,
+        width: 195,
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+    },
+    menu: {
+        fontSize: 35,
+        justifyContent: 'flex-start',
+    },
+    login: {
+        fontSize: 35,
+        justifyContent: 'flex-end',
+    },
 });
 
 export default App;
