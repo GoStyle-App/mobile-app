@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 import getPromotionalCodes from '../api/getPromotionalCodes';
 import PromotionalCode from './PromotionalCode';
-import {Colors, IconButton} from "react-native-paper";
+import {Colors, IconButton} from 'react-native-paper';
 
 export default function PromotionalCodes({ route, navigation, myCodes }) {
     const { link } = route.params;
@@ -60,7 +60,7 @@ export default function PromotionalCodes({ route, navigation, myCodes }) {
                     />
                 </View>
             </View>
-        )
+        );
     }
 
     return (
