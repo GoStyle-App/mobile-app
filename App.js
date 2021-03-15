@@ -36,7 +36,7 @@ function Navbar({ navigation }) {
 }
 
 function HomeScreen({ route, navigation }) {
-    const [ myCodes, setMyCodes ] = useState([]);
+    const [ myCodes ] = useState([]);
 
     return (
         <View style={ styles.container }>
@@ -52,7 +52,7 @@ function ScanScreen({ navigation }) {
             <Navbar navigation={navigation} />
             <Scan navigation={navigation}/>
         </View>
-    )
+    );
 }
 
 function DetailPromotionalCodeScreen({ route, navigation }) {
@@ -61,7 +61,7 @@ function DetailPromotionalCodeScreen({ route, navigation }) {
             <Navbar navigation={navigation} />
             <DetailPromotionalCode navigation={ navigation } route={ route }/>
         </View>
-    )
+    );
 }
 
 const Drawer = createDrawerNavigator();

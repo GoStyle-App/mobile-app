@@ -5,12 +5,10 @@ import getDateText from './../filters/getDateText';
 
 export default function DetailPromotionalCode({ route, navigation }) {
     const { code } = route.params;
-    const { myCodes } = route.params;
 
     return (
         <View style={ styles.container }>
             <Text style={ styles.code }>{ code.code }</Text>
-            {/*// TODO : les dates ne sont pas obligatoires*/}
             <Text style={ styles.date }>{ getDateText(code) }</Text>
             <Text style={ styles.label }>{ code.label }</Text>
             <Text style={ styles.description }>{ code.description }</Text>
@@ -25,7 +23,7 @@ export default function DetailPromotionalCode({ route, navigation }) {
                 />
             </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -64,4 +62,4 @@ const styles = StyleSheet.create({
         marginRight: 250,
         marginTop: 350,
     }
-})
+});

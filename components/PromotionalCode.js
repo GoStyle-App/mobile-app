@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, View, Text, } from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, } from 'react-native';
 import { IconButton, Colors } from 'react-native-paper';
 
 export default function PromotionalCode(codes) {
@@ -11,7 +11,7 @@ export default function PromotionalCode(codes) {
     if (hidden) {
         return (
             <View/>
-        )
+        );
     }
 
     return (
@@ -45,7 +45,7 @@ export default function PromotionalCode(codes) {
                 }}
             />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         textAlign: 'left',
     }
-})
+});
 
