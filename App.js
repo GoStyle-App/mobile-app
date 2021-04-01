@@ -11,6 +11,7 @@ import Scan from './components/Scan';
 import PromotionalCodes from './components/PromotionalCodes';
 import DetailPromotionalCode from './components/DetailPromotionalCode';
 import { useState } from 'react';
+import ListPromotionalCodes from './components/ListPromotionalCodes';
 
 function Navbar({ navigation }) {
     return (
@@ -64,6 +65,15 @@ function DetailPromotionalCodeScreen({ route, navigation }) {
     );
 }
 
+function ListPromotionalCodesScreen({ route, navigation }) {
+    return (
+        <View>
+            <Navbar navigation={navigation} />
+            <ListPromotionalCodes navigation={ navigation } route={ route }/>
+        </View>
+    );
+}
+
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
@@ -92,6 +102,13 @@ function App() {
                         component={ ScanScreen }
                         options={{
                             title: 'Scanner un Qrcode',
+                        }}
+                    />
+                    <Drawer.Screen
+                        name='ListPromotionalCode'
+                        component={ ListPromotionalCodesScreen }
+                        options={{
+                            title: 'Liste des codes'
                         }}
                     />
                     <Drawer.Screen

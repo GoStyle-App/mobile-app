@@ -8,6 +8,20 @@ export default function PromotionalCode(codes) {
     const myCodes = codes.myCodes;
     const [ hidden, setHidden ] = useState(false);
 
+    if (codes.detail === false) {
+        return (
+            <View style={ styles.list }>
+                <Text style={ styles.code }>
+                    { code.code }
+                </Text>
+                <Text style={ styles.label }>
+                    { code.label }
+                </Text>
+            </View>
+        )
+
+    }
+
     if (hidden) {
         return (
             <View/>
@@ -53,6 +67,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         textAlign: 'left',
         alignItems: 'center',
+        marginBottom: 10,
     },
     code: {
         width: 80,
