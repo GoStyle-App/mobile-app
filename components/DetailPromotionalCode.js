@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#38B6FF',
         borderRadius: 50,
         marginRight: 250,
-        marginTop: 350,
+        marginTop: 275,
     }
 });

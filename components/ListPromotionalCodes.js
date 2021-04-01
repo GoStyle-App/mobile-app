@@ -4,8 +4,7 @@ import getPromotionalCodes from '../api/getPromotionalCodes';
 import PromotionalCode from './PromotionalCode';
 import {Colors, IconButton} from 'react-native-paper';
 
-export default function PromotionalCodes({ route, navigation, myCodes }) {
-    const { link } = route.params;
+export default function ListPromotionalCodes({ route, navigation }) {
     const [ codes, setCodes ] = useState([]);
 
     getPromotionalCodes().then((promotionalCodes) => {
@@ -25,27 +24,19 @@ export default function PromotionalCodes({ route, navigation, myCodes }) {
         setCodes(codes);
     });
 
-    if (link && codes.find(code => code.id === parseInt(link)) && !myCodes.find(code => code.id === parseInt(link))) {
-        myCodes.push(codes.find(code => code.id === parseInt(link)));
-    }
-
-    let show = true;
-    if (myCodes.length === 0) {
-        show = false;
-    }
-
-    if (show) {
+    if (codes.length > 0) {
         return (
             <View style={ styles.codes }>
-                <Text style={ styles.title }>Mes codes promos</Text>
+                <Text style={ styles.title }>Liste des codes promotionnels scanabless</Text>
                 <FlatList
-                    data={ myCodes }
+                    data={ codes }
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) =>
                         <PromotionalCode
                             code={ item }
                             navigation={ navigation }
-                            myCodes={ myCodes }
+                            myCodes={ codes }
+                            detail={ false }
                         />
                     }
                 />
@@ -65,29 +56,8 @@ export default function PromotionalCodes({ route, navigation, myCodes }) {
 
     return (
         <View style={ styles.codes }>
-            <Text style={ styles.title }>Mes codes promos</Text>
+            <Text style={ styles.title }>Liste des codes promotionnels scanables</Text>
             <Text style={ styles.text }>Pas de codes promos</Text>
-            <View style={ styles.buttonContainerSimple }>
-                <Button
-                    title="Scan"
-                    onPress={() => {
-                        navigation.navigate('Scan', {
-                            navigation: navigation,
-                        });
-                    }}
-                    color='#38B6FF'
-                />
-            </View>
-            <View style={ styles.buttonContainer }>
-                <IconButton
-                    icon="qrcode-scan"
-                    color={ Colors.white }
-                    size={ 35 }
-                    onPress={() => {
-                        navigation.navigate('Scan');
-                    }}
-                />
-            </View>
         </View>
     );
 }
@@ -102,10 +72,7 @@ const styles = StyleSheet.create({
         color: '#2E2E2E',
         fontSize: 20,
         textTransform: 'uppercase',
-    },
-    text: {
-        marginBottom: 30,
-        color: '#737373',
+        textAlign: 'center',
     },
     buttonContainerSimple: {
         width: 150,
