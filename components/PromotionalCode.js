@@ -18,8 +18,7 @@ export default function PromotionalCode(codes) {
                     { code.label }
                 </Text>
             </View>
-        )
-
+        );
     }
 
     if (hidden) {
