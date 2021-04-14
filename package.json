@@ -44,8 +44,8 @@
     "@testing-library/react-native": "^7.2.0",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
-    "react-native-vector-icons": "^8.1.0",
     "jest-expo": "^40.0.2",
+    "react-native-vector-icons": "^8.1.0",
     "jest-fetch-mock": "^3.0.3",
     "react-test-renderer": "^17.0.1"
   },
