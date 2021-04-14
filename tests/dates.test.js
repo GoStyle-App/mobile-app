@@ -34,5 +34,4 @@ test('print start and end Dates if exists', () => {
 
         expect(getDateText({ startDate: 'invalid', endDate: 'invalid' }))
         .toBe('À partir du Invalid Date Jusqu\'au Invalid Date');
-
 });
