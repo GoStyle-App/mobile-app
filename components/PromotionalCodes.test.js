@@ -57,7 +57,7 @@ describe('Testing PromotionalCodes Component', () => {
         expect(buttonToScan).toBeTruthy();
     });
 
-    test('Scan Button prints Scan Screen on press', async () => {
+    test('Scan Button prints ScanScreen on press', async () => {
         const component = (
             <NavigationContainer>
                 <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
