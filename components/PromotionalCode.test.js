@@ -3,6 +3,7 @@ import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import PromotionalCode from './PromotionalCode';
 
+/* global describe, expect, test */
 describe('Testing PromotionalCode Component', () => {
     const item = {
         'code': 'ETE2020',

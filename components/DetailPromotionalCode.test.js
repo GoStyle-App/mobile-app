@@ -4,6 +4,7 @@ import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import getDateText from '../filters/getDateText';
 
+/* global describe, expect, test */
 describe('Display corresponding promotional code.', () => {
     const code = {
         'code': 'ETE2020',

@@ -5,6 +5,7 @@ import PromotionalCodes from './PromotionalCodes';
 import Scan from './Scan';
 import 'isomorphic-fetch';
 
+/* global describe, expect, test */
 describe('Testing PromotionalCodes Component', () => {
     const myCodes = [];
     const route = {

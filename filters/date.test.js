@@ -1,5 +1,6 @@
 import shortDate from './date';
 
+/* global describe, expect, test */
 describe('Testing Dates functions', () => {
     test('shortDate("2021-04-24") => "24/04/2021"', () => {
         expect(shortDate('')).toBe('');

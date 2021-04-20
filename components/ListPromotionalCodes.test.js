@@ -4,6 +4,7 @@ import { render } from '@testing-library/react-native';
 import 'isomorphic-fetch';
 import ListPromotionalCodes from './ListPromotionalCodes';
 
+/* global describe, expect, test */
 describe('Testing List Promotional Codes component', () => {
     const route = {
         'key': 'Home-Nx8Rj_yGS8oGfmw-QfVCq',
