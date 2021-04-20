@@ -37,8 +37,8 @@ export default function PromotionalCode(codes) {
             </Text>
             <IconButton
                 icon="information"
-                color={Colors.blue300}
-                size={20}
+                color={ Colors.blue300 }
+                size={ 20 }
                 onPress={() => {
                     navigation.navigate('DetailPromotionalCode', {
                         code: code,
@@ -47,8 +47,8 @@ export default function PromotionalCode(codes) {
             />
             <IconButton
                 icon="trash-can-outline"
-                color={Colors.red500}
-                size={20}
+                color={ Colors.red500 }
+                size={ 20 }
                 onPress={() => {
                     const index = myCodes.findIndex(x => x.id === code.id);
                     if (index !== undefined) {
@@ -81,4 +81,3 @@ const styles = StyleSheet.create({
         textAlign: 'left',
     }
 });
-

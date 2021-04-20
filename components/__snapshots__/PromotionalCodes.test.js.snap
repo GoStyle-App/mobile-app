@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing PromotionalCodes Component Scan Button prints Scan Screen on press 1`] = `
+exports[`Testing PromotionalCodes Component Scan Button prints ScanScreen on press 1`] = `
 <Text>
   Requesting for camera permission
 </Text>

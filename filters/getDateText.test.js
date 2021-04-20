@@ -1,4 +1,4 @@
-import getDateText from "./getDateText";
+import getDateText from './getDateText';
 
 test('print start and end Dates if exists', () => {
     expect(getDateText({ startDate: '2021-04-24', endDate: '2021-05-30' }))

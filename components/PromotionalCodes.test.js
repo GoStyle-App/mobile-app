@@ -57,7 +57,7 @@ describe('Testing PromotionalCodes Component', () => {
         expect(buttonToScan).toBeTruthy();
     });
 
-    test('Scan Button prints Scan Screen on press', async () => {
+    test('Scan Button prints ScanScreen on press', async () => {
         const component = (
             <NavigationContainer>
                 <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
@@ -76,4 +76,29 @@ describe('Testing PromotionalCodes Component', () => {
 
         expect(newScreen).toMatchSnapshot();
     });
+
+    test('The screen prints my promotional code scanned', async () => {
+        myCodes.push({
+            'code': 'ETE2020',
+            'description': 'Bénéficier de 20% sur vos achats cet été',
+            'endDate': '2021-05-30T00:00:00+00:00',
+            'id': 1,
+            'label': 'Promotion été 2020',
+            'startDate': '2021-04-24T00:00:00+00:00',
+        });
+
+        const component = (
+            <NavigationContainer>
+                <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
+            </NavigationContainer>
+        );
+        const { findByText } = render(component);
+        const screenPrintsCodeScanned = await findByText(myCodes[0].code);
+
+        expect(screenPrintsCodeScanned).toBeTruthy();
+    });
+
+    // TODO : test si je mets 2x le même code promo s'il me l'affiche 2 fois
+
+    // TODO : test lorsque je supprime un code (trash)
 });
