@@ -12,7 +12,7 @@ export default function ListPromotionalCodes({ navigation }) {
 
         promotionalCodes.forEach(promotionalCode => {
             codes.push({
-                'id': promotionalCode.id,
+                "id": promotionalCode.id,
                 'code': promotionalCode.code,
                 'label': promotionalCode.label,
                 'description': promotionalCode.description,
