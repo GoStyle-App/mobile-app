@@ -27,7 +27,7 @@ export default function ListPromotionalCodes({ navigation }) {
     if (codes.length > 0) {
         return (
             <View style={ styles.codes }>
-                <Text style={ styles.title }>Liste des codes promotionnels scanabless</Text>
+                <Text style={ styles.title }>Liste des codes promotionnels scanables</Text>
                 <FlatList
                     data={ codes }
                     keyExtractor={(item) => item.id.toString()}
