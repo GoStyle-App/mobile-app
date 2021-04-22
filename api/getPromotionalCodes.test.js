@@ -58,4 +58,17 @@ describe('Getting promotionnal codes without problem.', () => {
 
         expect(promotionalCodes.length).toEqual(3);
     });
+
+    test('API call should return id for each promotional code', async () => {
+        const response = await getPromotionalCodes();
+        const promotionalCodesId = [];
+
+        response.forEach((promotionalCode) => {
+            if (promotionalCode.id) {
+                promotionalCodesId.push(promotionalCode);
+            }
+        });
+
+        expect(promotionalCodesId.length).toEqual(3);
+    });
 });

@@ -34,4 +34,3 @@ describe('Testing Scan component', () => {
         expect(ScanRender).toMatchSnapshot();
     });
 });
-// TODO : faire des tests pour Scan

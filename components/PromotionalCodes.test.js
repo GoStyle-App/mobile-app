@@ -78,16 +78,39 @@ describe('Testing PromotionalCodes Component', () => {
         expect(newScreen).toMatchSnapshot();
     });
 
+    test('Correct render of component', async () => {
+        const component = (
+            <NavigationContainer>
+                <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
+            </NavigationContainer>
+        );
+        const PromotionalCodesRender = render(component);
+
+        expect(PromotionalCodesRender).toMatchSnapshot();
+    });
+
+    test('Promotional code with id = 0 is not accepted', async () => {
+        route.params.link = 0;
+        const component = (
+            <NavigationContainer>
+                <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
+            </NavigationContainer>
+        );
+        const { findByText } = render(component);
+        const buttonToScanAlreadyDisplayed = await findByText('Scan');
+
+        expect(buttonToScanAlreadyDisplayed).toBeTruthy();
+    });
+
     test('The screen prints my promotional code scanned', async () => {
         myCodes.push({
+            'id': 1,
             'code': 'ETE2020',
             'description': 'Bénéficier de 20% sur vos achats cet été',
-            'endDate': '2021-05-30T00:00:00+00:00',
-            'id': 1,
             'label': 'Promotion été 2020',
+            'endDate': '2021-05-30T00:00:00+00:00',
             'startDate': '2021-04-24T00:00:00+00:00',
         });
-
         const component = (
             <NavigationContainer>
                 <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
@@ -99,7 +122,16 @@ describe('Testing PromotionalCodes Component', () => {
         expect(screenPrintsCodeScanned).toBeTruthy();
     });
 
-    // TODO : test si je mets 2x le même code promo s'il me l'affiche 2 fois
+    test('The screen prints distinct promotional code (no duplicate)', async () => {
+        route.params.link = 1;
+        const component = (
+            <NavigationContainer>
+                <PromotionalCodes route={ route } navigation={ navigation } myCodes={ myCodes } />
+            </NavigationContainer>
+        );
+        const { findAllByText } = render(component);
+        const screenPrintsCodeScanned = await findAllByText(myCodes[0].code);
 
-    // TODO : test lorsque je supprime un code (trash)
+        expect(screenPrintsCodeScanned.length).toEqual(1);
+    });
 });

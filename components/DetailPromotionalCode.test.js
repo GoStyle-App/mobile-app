@@ -110,5 +110,4 @@ describe('Display corresponding promotional code.', () => {
 
         expect(screenPrintsBackHomeButton).toBeTruthy();
     });
-
 });

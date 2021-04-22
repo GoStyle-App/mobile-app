@@ -4,6 +4,7 @@ import { render } from '@testing-library/react-native';
 import 'isomorphic-fetch';
 import ListPromotionalCodes from './ListPromotionalCodes';
 
+
 /* global describe, expect, test */
 describe('Testing List Promotional Codes component', () => {
     const route = {
@@ -44,24 +45,9 @@ describe('Testing List Promotional Codes component', () => {
         expect(screen).toBeTruthy();
     });
 
-    // test('The screen prints every promotional code', async () => {
-    //     const component = (
-    //         <NavigationContainer>
-    //             <ListPromotionalCodes navigation={ navigation } route={ route } />
-    //         </NavigationContainer>
-    //     );
-    //     const { findByText } = await render(component);
-    //     const promo1 = await findByText('Promotion été 2020');
-    //     const promo2 = await findByText('Promotion décembre');
-    //     const promo3 = await findByText('Promos chaussures');
-    //
-    //     expect(promo1).toBeTruthy();
-    //     expect(promo2).toBeTruthy();
-    //     expect(promo3).toBeTruthy();
-    // });
-
     test('Correct render of component', () => {
-        const component = render(<ListPromotionalCodes />);
+        const component = render(<ListPromotionalCodes navigation={ navigation } route={ route } />);
+
         expect(component).toMatchSnapshot();
     });
 });

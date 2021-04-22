@@ -76,6 +76,4 @@ describe('Testing PromotionalCode Component', () => {
 
         expect(PromotionalCodeRender).toMatchSnapshot();
     });
-
-    // TODO : regarder si je peux savoir s'il y a bien les boutons "infos" et "trash"
 });
