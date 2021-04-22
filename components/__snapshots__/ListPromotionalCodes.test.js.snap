@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Getting promotionnal codes without problem. CORRECTLY RENDER LIST OF PROMOTIONNAL CODES 1`] = `
+exports[`Testing List Promotional Codes component Correct render of component 1`] = `
 <View
   style={
     Object {

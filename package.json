@@ -13,6 +13,11 @@
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "automock": false,
+    "resetMocks": false,
+    "setupFiles": [
+      "./setupJest.js"
     ]
   },
   "dependencies": {
@@ -40,6 +45,7 @@
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "jest-expo": "^40.0.2",
+    "jest-fetch-mock": "^3.0.3",
     "react-native-vector-icons": "^8.1.0",
     "react-test-renderer": "^17.0.1"
   },

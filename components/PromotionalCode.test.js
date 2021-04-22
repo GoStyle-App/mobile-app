@@ -41,7 +41,7 @@ describe('Testing PromotionalCode Component', () => {
         },
     ];
 
-    test ('Component prints the code (like "ETE2020")', async () => {
+    test('Component prints the code (like "ETE2020")', async () => {
         const component = (
             <NavigationContainer>
                 <PromotionalCode code={ item } navigation={ navigation } myCodes={ myCodes } />
@@ -53,7 +53,7 @@ describe('Testing PromotionalCode Component', () => {
         expect(screenPrintsTheCode).toBeTruthy();
     });
 
-    test ('Component prints the label', async () => {
+    test('Component prints the label', async () => {
         const component = (
             <NavigationContainer>
                 <PromotionalCode code={ item } navigation={ navigation } myCodes={ myCodes } />
@@ -63,6 +63,17 @@ describe('Testing PromotionalCode Component', () => {
         const screenPrintsTheLabel = await findByText(myCodes[0].label);
 
         expect(screenPrintsTheLabel).toBeTruthy();
+    });
+
+    test('Correct render of component', () => {
+        const component = (
+            <NavigationContainer>
+                <PromotionalCode code={ item } navigation={ navigation } myCodes={ myCodes } />
+            </NavigationContainer>
+        );
+        const PromotionalCodeRender = render(component);
+
+        expect(PromotionalCodeRender).toMatchSnapshot();
     });
 
     // TODO : regarder si je peux savoir s'il y a bien les boutons "infos" et "trash"

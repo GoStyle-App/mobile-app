@@ -72,7 +72,7 @@ describe('Testing PromotionalCodes Component', () => {
 
         fireEvent(buttonScan, 'press');
 
-        const newScreen = render(<Scan />).toJSON();
+        const newScreen = render(<Scan />);
 
         expect(newScreen).toMatchSnapshot();
     });

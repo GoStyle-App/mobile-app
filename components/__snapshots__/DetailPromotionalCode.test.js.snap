@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display corresponding promotional code. Correctly render detail of promotional code 1`] = `
+exports[`Display corresponding promotional code. Correct render of component 1`] = `
 <View
   style={
     Object {

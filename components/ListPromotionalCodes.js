@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import getPromotionalCodes from '../api/getPromotionalCodes';
 import PromotionalCode from './PromotionalCode';
-import {Colors, IconButton} from 'react-native-paper';
+import { Colors, IconButton } from 'react-native-paper';
 
 export default function ListPromotionalCodes({ navigation }) {
     const [ codes, setCodes ] = useState([]);

@@ -39,7 +39,7 @@ describe('Display corresponding promotional code.', () => {
         'toggleDrawer': function anonymous(){},
     };
 
-    test('Correctly render detail of promotional code', () => {
+    test('Correct render of component', () => {
         const component = (
             <NavigationContainer>
                 <DetailPromotionalCode navigation={ navigation } route={ route } />
