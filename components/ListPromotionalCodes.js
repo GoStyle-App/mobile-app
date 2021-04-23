@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 import getPromotionalCodes from '../api/getPromotionalCodes';
 import PromotionalCode from './PromotionalCode';
-import {Colors, IconButton} from 'react-native-paper';
+import { Colors, IconButton } from 'react-native-paper';
 
-export default function ListPromotionalCodes({ route, navigation }) {
+export default function ListPromotionalCodes({ navigation }) {
     const [ codes, setCodes ] = useState([]);
 
     getPromotionalCodes().then((promotionalCodes) => {
@@ -27,7 +27,7 @@ export default function ListPromotionalCodes({ route, navigation }) {
     if (codes.length > 0) {
         return (
             <View style={ styles.codes }>
-                <Text style={ styles.title }>Liste des codes promotionnels scanabless</Text>
+                <Text style={ styles.title }>Liste des codes promotionnels scanables</Text>
                 <FlatList
                     data={ codes }
                     keyExtractor={(item) => item.id.toString()}

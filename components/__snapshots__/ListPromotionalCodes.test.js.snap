@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing List Promotional Codes component Correct render of component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "marginTop": 80,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#2E2E2E",
+        "fontSize": 20,
+        "marginBottom": 30,
+        "textAlign": "center",
+        "textTransform": "uppercase",
+      }
+    }
+  >
+    Liste des codes promotionnels scanables
+  </Text>
+  <Text>
+    Pas de codes promos
+  </Text>
+</View>
+`;
