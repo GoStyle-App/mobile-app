@@ -1,7 +1,7 @@
 require('jest-fetch-mock').enableMocks();
-import React from 'react';
 import getPromotionalCodes from './getPromotionalCodes';
 
+/* global test, describe, expect*/
 describe('Getting promotionnal codes without problem.', () => {
     fetch.mockResponse(JSON.stringify({
         '@context': '/api/contexts/PromotionalCode',

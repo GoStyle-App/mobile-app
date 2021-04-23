@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 import Scan from './Scan';
 
+/* global describe, test, expect */
 describe('Testing Scan component', () => {
     const navigation = {
         'addListener': function addListener(){},
